@@ -36,7 +36,7 @@ export const SiteFooter = () => {
             height={185}
             loading="lazy"
             decoding="async"
-            className="h-12 w-auto"
+            className="h-12 w-auto self-center"
           />
           <p className="text-sm leading-relaxed">{t("footer.tagline")}</p>
           <p className="sr-only">{t("footer.follow")}</p>
