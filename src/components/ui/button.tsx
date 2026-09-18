@@ -18,11 +18,23 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        /* ---- Happy Smiles brand variants ---- */
+        yellow:
+          "bg-gradient-yellow font-semibold text-brand-navy shadow-glow hover:brightness-[1.06]",
+        cyan: "bg-brand-cyan font-semibold text-brand-onDark shadow-card hover:bg-brand-cyan/90",
+        /* Transparent so it stays visible on navy sections (the stock `outline`
+           variant is opaque and would hide white text). */
+        glass:
+          "border border-brand-onDark/30 bg-brand-onDark/10 font-medium text-brand-onDark backdrop-blur-sm hover:border-brand-onDark/50 hover:bg-brand-onDark/20",
+        navy: "bg-brand-navy font-semibold text-brand-onDark hover:bg-brand-navy/90",
+        navyOutline:
+          "border border-brand-navy/25 bg-transparent font-medium text-brand-navy hover:border-brand-navy/45 hover:bg-brand-navy/5",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
+        xl: "h-12 rounded-full px-7 text-base sm:h-[3.25rem] sm:px-8",
         icon: "h-10 w-10",
       },
     },

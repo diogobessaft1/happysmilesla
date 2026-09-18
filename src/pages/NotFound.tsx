@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 
 const NotFound = () => {
   const location = useLocation();
@@ -14,13 +17,16 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-gray-600">{t("notFound.title")}</p>
-        <a href="/" className="text-blue-500 underline hover:text-blue-700">
-          {t("notFound.actions.backHome")}
-        </a>
+    <div className="flex min-h-screen items-center justify-center bg-gradient-navy p-6 text-center text-brand-onDark">
+      <div className="flex max-w-md flex-col items-center gap-6">
+        <span className="text-6xl font-bold text-brand-yellow">404</span>
+        <p className="text-xl text-brand-onDark/85">{t("notFound.title")}</p>
+        <Button asChild variant="yellow" size="lg">
+          <a href="/">
+            {t("notFound.actions.backHome")}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+        </Button>
       </div>
     </div>
   );

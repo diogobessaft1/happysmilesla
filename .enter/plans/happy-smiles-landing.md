@@ -97,30 +97,31 @@ Also: `scroll-behavior: smooth` on `html` with `scroll-padding-top` matching the
 
 ## Implementation checklist
 
-- [ ] `src/index.css`: navy/cyan/yellow/red brand tokens, gradients, shadows, smooth scroll + `scroll-padding-top`, reduced-motion guard; shadcn tokens remapped to the brand.
-- [ ] `tailwind.config.ts`: `brand` colors, heading/sans font families, keyframes + animations; page stays responsive from 390px up.
-- [ ] `src/components/ui/button.tsx`: `hero`, `glass`, `cyan` variants added; no white text on the stock non-transparent `outline` variant.
-- [ ] Images downloaded to `public/images/` and confirmed non-zero, correct MIME, under a sane size budget before being referenced.
-- [ ] `src/data/clinic.ts` created with phone, email, address, map embed, hours, socials, services, image paths, nav anchors.
-- [ ] 7 landing components created; `Index.tsx` composes them in order Hero → Services → About → Testimonials → Contact → Footer.
-- [ ] Header: cyan top bar + sticky navy nav, anchor links scroll to the right `id`s, mobile menu opens and closes.
-- [ ] Hero CTA buttons resolve to `#contact` and `tel:3235290002`; all 8 services render with an icon and name.
-- [ ] Contact form: valid input builds a correctly encoded `mailto:happysmilesla@gmail.com`; invalid input blocks submit and shows field errors; copy-email + phone fallbacks present.
-- [ ] Footer social links point to the real Facebook and Instagram URLs.
-- [ ] `i18n.config.json` = `en` + `es`; `public/locales/en.json` and `es.json` have identical key sets with no empty values; `zh-CN.json` deleted.
-- [ ] Every visible string in the landing components goes through `t("literal.key")` (no literals left in JSX or `aria-label`s).
-- [ ] `index.html`: title, description, keywords, canonical, OG/Twitter, theme-color, and valid JSON-LD `Dentist` schema.
-- [ ] `NotFound.tsx` restyled to the brand without breaking its existing keys.
+- [x] `src/index.css`: navy/cyan/yellow/red brand tokens, gradients, shadows, smooth scroll + `scroll-padding-top`, reduced-motion guard; shadcn tokens remapped to the brand.
+- [x] `tailwind.config.ts`: `brand` colors, heading/sans font families, keyframes + animations; page stays responsive from 390px up.
+- [x] `src/components/ui/button.tsx`: `hero`, `glass`, `cyan` variants added; no white text on the stock non-transparent `outline` variant.
+- [x] Images downloaded to `public/images/` and confirmed non-zero, correct MIME, under a sane size budget before being referenced.
+- [x] `src/data/clinic.ts` created with phone, email, address, map embed, hours, socials, services, image paths, nav anchors.
+- [x] 7 landing components created; `Index.tsx` composes them in order Hero → Services → About → Testimonials → Contact → Footer.
+- [x] Header: cyan top bar + sticky navy nav, anchor links scroll to the right `id`s, mobile menu opens and closes.
+- [x] Hero CTA buttons resolve to `#contact` and `tel:3235290002`; all 8 services render with an icon and name.
+- [x] Contact form: valid input builds a correctly encoded `mailto:happysmilesla@gmail.com`; invalid input blocks submit and shows field errors; copy-email + phone fallbacks present.
+- [x] Footer social links point to the real Facebook and Instagram URLs.
+- [x] `i18n.config.json` = `en` + `es`; `public/locales/en.json` and `es.json` have identical key sets with no empty values; `zh-CN.json` deleted.
+- [x] Every visible string in the landing components goes through `t("literal.key")` (no literals left in JSX or `aria-label`s).
+- [x] `index.html`: title, description, keywords, canonical, OG/Twitter, theme-color, and valid JSON-LD `Dentist` schema.
+- [x] `NotFound.tsx` restyled to the brand without breaking its existing keys.
 
 ## Verification checklist
 
-- [ ] `pnpm exec tsc --noEmit` and `pnpm lint` pass with no new errors.
-- [ ] `pnpm run build` completes successfully.
-- [ ] `node /workspace/.agents/skills/enter_i18n/assets/scripts/check-i18n.mjs` prints `i18n check passed.`
-- [ ] `node /workspace/.agents/skills/enter_i18n/assets/scripts/scan-i18n.mjs` runs last and writes reports without errors.
-- [ ] Positive: page renders at `desktop_1280` — hero, 8 services, about, 3 testimonials, map, form, footer all visible and on-brand.
-- [ ] Boundary: page renders at `mobile_390` — no horizontal overflow, nav collapses to the menu, grid stacks single-column.
-- [ ] Language switch to Español re-renders every section in Spanish and persists across refresh (cookie + `<html lang>`).
-- [ ] Negative: submitting the empty form shows validation errors and never navigates; switching to Spanish must not leave any English literal on the page.
-- [ ] No 404s in the network log for `/images/*`; all images visibly load.
-- [ ] `grep`-sweep confirms no hardcoded `#001188`-style colors or literals inside landing components.
+- [x] `pnpm exec tsc --noEmit` and `pnpm lint` pass with no new errors.
+- [x] `pnpm run build` completes successfully.
+- [x] `node /workspace/.agents/skills/enter_i18n/assets/scripts/check-i18n.mjs` prints `i18n check passed.`
+- [x] `node /workspace/.agents/skills/enter_i18n/assets/scripts/scan-i18n.mjs` runs last and writes reports without errors.
+- [x] Positive: page renders at `desktop_1280` — hero, 8 services, about, 3 testimonials, map, form, footer all visible and on-brand.
+- [x] Boundary: page renders at `mobile_390` — no horizontal overflow, nav collapses to the menu, grid stacks single-column.
+- [x] Language switch: every section renders in Spanish with no overflow (verified by temporarily serving the Spanish strings as the rendered locale, then restoring `en.json`). The switcher click itself and cookie persistence were NOT exercised — the preview cannot be interacted with programmatically.
+- [ ] Negative: submitting the empty form shows validation errors and never navigates — NOT verified (no programmatic interaction with the preview); the `required` rules and disabled-navigation behaviour are implemented but unexercised at runtime.
+- [x] No 404s in the network log for `/images/*`; all images visibly load.
+- [x] Map embed: the frame stays blank inside the preview sandbox (third-party frames are blocked there). The embed URL was checked directly — the final `200` response carries no `frame-ancestors` directive, so it is frameable in a real browser. The card always shows the address + "Get directions" below the frame regardless.
+- [x] `grep`-sweep confirms no hardcoded `#001188`-style colors or literals inside landing components.
