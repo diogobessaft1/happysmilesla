@@ -10,6 +10,7 @@ export const SiteFooter = () => {
     { id: sectionIds.home, label: t("nav.home") },
     { id: sectionIds.services, label: t("nav.services") },
     { id: sectionIds.about, label: t("nav.about") },
+    { id: sectionIds.locations, label: t("nav.locations") },
     { id: sectionIds.testimonials, label: t("nav.testimonials") },
     { id: sectionIds.contact, label: t("nav.contact") },
   ];

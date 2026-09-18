@@ -7,20 +7,79 @@
  * PLACEHOLDER: `hours` are not published by the clinic; replace with the real
  * opening times before launch.
  */
+
+export type ClinicLocation = {
+  id: string;
+  /** Office name — a brand proper noun, so it is never translated. */
+  name: string;
+  isPrimary: boolean;
+  phone: { display: string; href: string };
+  address: {
+    street: string;
+    locality: string;
+    region: string;
+    postalCode: string;
+  };
+};
+
+/**
+ * All three offices, taken from the clinic's own locations page
+ * (happysmilesla.com/en/localidades-2/). Street wording for the primary office
+ * matches what Google Maps and Yelp publish, so "Get directions" lands on the
+ * listing patients already see. Landmark hints are translatable and live in the
+ * locale files.
+ */
+export const locations: ClinicLocation[] = [
+  {
+    id: "westernAve",
+    name: "Happy Smiles Western Ave",
+    isPrimary: true,
+    phone: { display: "(323) 529-0002", href: "tel:+13235290002" },
+    address: {
+      street: "1655 S Western Ave, Ste. C",
+      locality: "Los Angeles",
+      region: "CA",
+      postalCode: "90006",
+    },
+  },
+  {
+    id: "plazaMexico",
+    name: "Happy Smiles Plaza Mexico",
+    isPrimary: false,
+    phone: { display: "(323) 515-1088", href: "tel:+13235151088" },
+    address: {
+      street: "11215 Long Beach Blvd, Ste. 1002",
+      locality: "Lynwood",
+      region: "CA",
+      postalCode: "90262",
+    },
+  },
+  {
+    id: "whittier",
+    name: "Happy Smiles Whittier",
+    isPrimary: false,
+    phone: { display: "(562) 378-0200", href: "tel:+15623780200" },
+    address: {
+      street: "9150 Painter Ave, Suite 105A",
+      locality: "Whittier",
+      region: "CA",
+      postalCode: "90602",
+    },
+  },
+];
+
+export const primaryLocation = locations[0];
+
+export const formatAddress = (location: ClinicLocation) =>
+  `${location.address.street}, ${location.address.locality}, ${location.address.region} ${location.address.postalCode}`;
+
+export const directionsUrlFor = (location: ClinicLocation) =>
+  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(formatAddress(location))}`;
+
 export const clinic = {
   name: "Happy Smiles",
-  phone: {
-    display: "(323) 529-0002",
-    href: "tel:+13235290002",
-  },
+  phone: primaryLocation.phone,
   email: "happysmilesla@gmail.com",
-  address: {
-    street: "1655 S Western Ave, Ste. C",
-    locality: "Los Angeles",
-    region: "CA",
-    postalCode: "90006",
-    country: "US",
-  },
   geo: {
     latitude: 34.042953,
     longitude: -118.309971,
@@ -30,10 +89,8 @@ export const clinic = {
     instagram: "https://instagram.com/happysmiles_la",
   },
   map: {
-    embedUrl:
-      "https://www.google.com/maps?q=1655%20S%20Western%20Ave%20Ste%20C%2C%20Los%20Angeles%2C%20CA%2090006&output=embed",
-    directionsUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=1655+S+Western+Ave+Ste+C%2C+Los+Angeles%2C+CA+90006",
+    embedUrl: `https://www.google.com/maps?q=${encodeURIComponent(formatAddress(primaryLocation))}&output=embed`,
+    directionsUrl: directionsUrlFor(primaryLocation),
   },
   hours: {
     weekdays: "9:00 AM – 6:00 PM",
@@ -46,15 +103,16 @@ export const clinic = {
     about: "/images/about-smile.jpg",
     braces: "/images/braces-aligners.jpg",
   },
-} as const;
+};
 
-export const clinicFullAddress = `${clinic.address.street}, ${clinic.address.locality}, ${clinic.address.region} ${clinic.address.postalCode}`;
+export const clinicFullAddress = formatAddress(primaryLocation);
 
 /** Anchors used by the header nav, footer nav and every in-page CTA. */
 export const sectionIds = {
   home: "home",
   services: "services",
   about: "about",
+  locations: "locations",
   testimonials: "testimonials",
   contact: "contact",
 } as const;

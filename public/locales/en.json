@@ -5,6 +5,7 @@
   "nav.home": "Home",
   "nav.services": "Services",
   "nav.about": "About Us",
+  "nav.locations": "Locations",
   "nav.testimonials": "Testimonials",
   "nav.contact": "Contact",
   "nav.cta": "Book Your Visit",
@@ -76,6 +77,14 @@
   "about.role.implant": "Dental Implants Specialist",
   "about.role.orthodontist": "Orthodontist",
   "about.role.general": "General Dentist",
+
+  "locations.eyebrow": "Our Locations",
+  "locations.title": "Three offices in Los Angeles County",
+  "locations.subtitle": "The same specialists and the same free first consultation — choose the office closest to you.",
+  "locations.primary": "Main clinic",
+  "locations.landmark.westernAve": "Corner of Western & Venice",
+  "locations.landmark.plazaMexico": "Inside Plaza Mexico, between Sketchers and Yogurt Land",
+  "locations.hoursNote": "Office hours vary by location — call the office you plan to visit to confirm today's schedule.",
 
   "testimonials.eyebrow": "Testimonials",
   "testimonials.title": "Real patients, real smiles",

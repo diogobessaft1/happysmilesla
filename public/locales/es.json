@@ -5,6 +5,7 @@
   "nav.home": "Inicio",
   "nav.services": "Servicios",
   "nav.about": "Nosotros",
+  "nav.locations": "Ubicaciones",
   "nav.testimonials": "Testimonios",
   "nav.contact": "Contacto",
   "nav.cta": "Solicitar cita",
@@ -76,6 +77,14 @@
   "about.role.implant": "Especialista en implantes dentales",
   "about.role.orthodontist": "Ortodoncista",
   "about.role.general": "Dentista general",
+
+  "locations.eyebrow": "Nuestras ubicaciones",
+  "locations.title": "Tres consultorios en el condado de Los Ángeles",
+  "locations.subtitle": "Los mismos especialistas y la misma primera consulta gratis: elija el consultorio más cercano.",
+  "locations.primary": "Clínica principal",
+  "locations.landmark.westernAve": "Esquina de Western y Venice",
+  "locations.landmark.plazaMexico": "Dentro de Plaza México, entre Sketchers y Yogurt Land",
+  "locations.hoursNote": "El horario varía según el consultorio: llame al consultorio que piensa visitar para confirmar el horario de hoy.",
 
   "testimonials.eyebrow": "Testimonios",
   "testimonials.title": "Pacientes reales, sonrisas reales",
