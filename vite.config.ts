@@ -24,6 +24,24 @@ export default defineConfig(({ mode }) => {
     base: '/',
     build: {
       outDir: 'dist',
+      rollupOptions: {
+        output: {
+          // Split the vendor libs so the browser can download them in parallel
+          // and cache them across deploys (only the app chunk changes).
+          manualChunks(id) {
+            if (!id.includes('node_modules')) return undefined;
+            if (id.includes('react-router') || id.includes('react-router-dom')) return 'router';
+            if (id.includes('@tanstack') || id.includes('react-query')) return 'query';
+            if (id.includes('i18next') || id.includes('react-i18next')) return 'i18n';
+            if (id.includes('lucide-react')) return 'icons';
+            if (id.includes('@radix-ui')) return 'radix';
+            if (id.includes('react-hook-form')) return 'forms';
+            if (id.includes('react-dom')) return 'react-dom';
+            if (id.includes('react') || id.includes('scheduler') || id.includes('object-assign')) return 'react';
+            return 'vendor';
+          },
+        },
+      },
     }
   };
 });

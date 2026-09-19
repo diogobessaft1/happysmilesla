@@ -81,6 +81,7 @@ export const Hero = () => {
               alt={t("hero.imageAlt")}
               width={955}
               height={579}
+              fetchPriority="high"
               className="h-[20rem] w-full object-cover object-center sm:h-[24rem] lg:h-[28rem]"
             />
             <div
