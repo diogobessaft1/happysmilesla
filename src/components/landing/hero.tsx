@@ -82,6 +82,7 @@ export const Hero = () => {
               width={955}
               height={579}
               fetchPriority="high"
+              decoding="async"
               className="h-[20rem] w-full object-cover object-center sm:h-[24rem] lg:h-[28rem]"
             />
             <div
