@@ -93,6 +93,7 @@ export const SiteHeader = () => {
               alt={t("common.appName")}
               width={396}
               height={185}
+              decoding="async"
               className="h-10 w-auto lg:h-11"
             />
           </a>
