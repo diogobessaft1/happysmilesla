@@ -56,7 +56,7 @@ export const Testimonials = () => {
             subtitle={t("testimonials.subtitle")}
           />
 
-          <div className="mx-auto w-full max-w-xs overflow-hidden rounded-[2rem] shadow-glow ring-1 ring-inset ring-brand-onDark/20 lg:mx-0 lg:max-w-none">
+          <div className="mx-auto w-full max-w-[21.8rem] overflow-hidden rounded-[2rem] shadow-glow ring-1 ring-inset ring-brand-onDark/20">
             <img
               src="/images/testimonial-patient.jpg"
               alt={t("testimonials.imageAlt")}
@@ -64,7 +64,7 @@ export const Testimonials = () => {
               height={431}
               loading="lazy"
               decoding="async"
-              className="h-56 w-full object-cover object-top sm:h-64"
+              className="mx-auto block h-auto w-full"
             />
           </div>
         </div>
